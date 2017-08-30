@@ -1,6 +1,19 @@
 <style>
+    body{
+        font-family: "Microsoft Yahei", 微软雅黑;
+    }
+    @media screen and (max-width: 993px) {
+        header .navbar .nav {
+            padding-left: 87px;
+        }
+    }
+    header .navbar-default{
+        background-color: #FFFFFF;
+        overflow: hidden;
+    }
     header nav{
         height: 70px;
+        /*font-family:'LiSu';*/
     }
     header .navbar-logo{
         margin-top: -14px;
@@ -25,8 +38,8 @@
                 </div>
                 <div class="navbar-list col-xs-7 hidden-xs">
                         <ul class="nav pull-right" >
-                            <li class="active"><a href="#">主页</a></li>
-                            <li><a href="#">产品服务</a></li>
+                            <li ><a href="#">首页</a></li>
+                            <li class="active"><a href="#">产品与服务</a></li>
                             <li><a href="#">解决方案</a></li>
                             <li><a href="#">新闻中心</a></li>
                             <li><a href="#">合作伙伴</a></li>
@@ -45,7 +58,7 @@
                 </div>
                 <div class="col-xs-2 navbar-login">
                     <ul class="nav pull-right hidden-xs">
-                        <li><a class="btn btn-default">登陆</a></li>
+                        <li><a href="/sign_in" class="btn btn-default">登陆</a></li>
                     </ul>
                 </div>
         </div>

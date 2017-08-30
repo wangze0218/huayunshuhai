@@ -14,3 +14,26 @@
 Route::get('/', function () {
     return view('front.home');
 });
+
+Route::get('/about_us', function () {
+    return view('front.about_us');
+});
+
+Route::get('/cooperative_partner', function () {
+    return view('front.cooperative_partner');
+});
+
+Route::resource('/sign_in','Front\SignInController');
+
+
+
+Route::group(['middleware' => 'BehindMiddleware'],function (){
+    //后台首页
+    Route::get('/behind', function () {
+        return view('behind.index');
+    });
+    //用户管理
+    Route::resource('/behind/user','Behind\UserController');
+});
+
+
