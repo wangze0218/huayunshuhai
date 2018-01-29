@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Mosaddek">
-    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <meta name="keyword" content="华云数海">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>FlatLab - Flat & Responsive Bootstrap Admin Template</title>
+    <title>华云数海</title>
     @include('behind.public.style')
-
+    @yield('style')
     <script src="{{asset('FlatLab/js/html5shiv.js')}}"></script>
     <script src="{{asset('FlatLab/js/respond.min.js')}}"></script>
     <script>
             //增删改查（单个）弹出层
-            function addOrEdit(url,title) {
+            function addOrEdit(url,title,size) {
                 layer.open({
                     type: 2,
-                    area: ['500px', '300px'],
+                    area: size,
                     fixed: false, //不固定
                     maxmin: true,
                     content: url,
@@ -26,21 +26,22 @@
                 });
                 return false;
             }
-            function remove(self) {
-                $.ajax({
+            function remove(url) {
+                    $.ajax({
                     cache: true,
                     type: "DELETE",
-                    url:self.href,
-                    data:{id:''},// 你的formid
+                    url:url,
+                    data:{_token:"{{ csrf_token() }}"},// 你的formid
                     async: true,
                     error: function(request) {
                         alert("Connection error");
-                        console.log(request);
                     },
                     success: function(data) {
-                        if(data){
+                        if(data.code == 10000){
                             var index = $('.delete').index(self);
-                            $('tr').eq(index+1).remove();
+                            location.reload();
+                        }else{
+                            alert('删除失败');
                         }
                     }
                 });
